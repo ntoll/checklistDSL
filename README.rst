@@ -26,7 +26,7 @@ Here's what it should look like:
 
     This can be several paragraphs.
 
-    * A single item with no constraints
+    # A single item with no constraints
     1 An item that needs to be done in order (first)
     2 An item that needs to be done in order (second)
 
@@ -34,15 +34,23 @@ Here's what it should look like:
 
     It's possible to choose 0-all of the following items.
 
-    () Item A of a multiple choice
-    () Item B of a multiple choice
-    () Item C of a multiple choice
+    Patient identity
+    [] Name
+    [] DoB
+    [] Hospital number
+
+    [] Shampoo the donkey
+
+
+    [] Item A of a multiple choice
+    [] Item B of a multiple choice
+    [] Item C of a multiple choice
 
     It's possible to select only one of the following items:
 
-    [] Item A in a constrained multiple choice
-    [] Item B in a constrained multiple choice
-    [] Item C in a constrained multiple choice
+    () Item A in a constrained multiple choice
+    () Item B in a constrained multiple choice
+    () Item C in a constrained multiple choice
 
     * Another single item with no constraints. Note the indentation for nesting.
 
@@ -60,3 +68,42 @@ Here's what it should look like:
     * {patient} Give consent for something.
     * {cleaner} Wipe up the blood and gore.
 ```
+
+
+== Surgical Safety Checklist ==
+
+By the WHO
+
+    == Sign In==
+
+    Patient has confirmed:
+    [] Identity
+    [] Site
+    [] Procedure
+    [] Consent
+
+    [] Site marked / NA
+
+    [] Anaesthesia safety check completed
+
+    [] Pulse oximeter on patient and functioning
+
+    Does the patient have:
+
+    Known allergy?
+    () Yes
+    () No
+
+    Difficult airway/aspiration risk?
+    () Yes, and equipment / assistance available
+    () No
+
+    Some other random stuff?
+    () Yup
+    () Nope
+
+    == Time out ==
+
+    Foo bar
+
+    [] Confirm they've all introduced themselves.
