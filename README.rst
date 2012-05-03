@@ -20,29 +20,29 @@ The DSL
 Here's what it should look like:
 
 ```
-= A Heading =
+    = A Heading =
 
-// A comment that isn't rendered.
+    // A comment that isn't rendered.
 
-Some explanatory text at the start of the list.
+    Some explanatory text at the start of the list.
 
-This can be several paragraphs.
+    This can be several paragraphs.
 
-[] A single item in a checklist
+    [] A single item in a checklist
 
-Each item immediately below belongs to this comment.
-[] Item 1
-[] Item 2
-[] Item 3
+    Each item immediately below belongs to this comment.
+    [] Item 1
+    [] Item 2
+    [] Item 3
 
-The following items are OR'd (rather than AND'd).
-() Item 1
-() Item 2
-() Item 3
+    The following items are OR'd (rather than AND'd).
+    () Item 1
+    () Item 2
+    () Item 3
 
-The following items have case insensitive roles assigned to them.
-[] {doctor, nurse} Check the machine that goes ping.
-[] {patient} Give consent.
-[] {surgeon} Make the incision.
-[] {cleaner} Tidy up the gore.
+    The following items have case insensitive roles assigned to them.
+    [] {doctor, nurse} Check the machine that goes ping.
+    [] {patient} Give consent.
+    [] {surgeon} Make the incision.
+    [] {cleaner} Tidy up the gore.
 ```
