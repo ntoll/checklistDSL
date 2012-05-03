@@ -17,9 +17,8 @@ password when asked so the software can install.
 The DSL
 +++++++
 
-Here's what it should look like:
+Here's what it should look like::
 
-```
     = A Heading =
 
     // A comment that isn't rendered.
@@ -45,4 +44,3 @@ Here's what it should look like:
     [] {patient} Give consent.
     [] {surgeon} Make the incision.
     [] {cleaner} Tidy up the gore.
-```
