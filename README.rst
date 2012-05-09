@@ -44,3 +44,7 @@ Here's what it should look like::
     [] {patient} Give consent.
     [] {surgeon} Make the incision.
     [] {cleaner} Tidy up the gore.
+
+    ---
+
+    You can crete a break with three or more minus signs.
