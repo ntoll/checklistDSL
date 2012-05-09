@@ -4,7 +4,7 @@ from checklistdsl.version import get_version
 
 setup(
     name='ChecklistDSL',
-    version=(),
+    version=get_version(),
     description='A simple markup DSL for creating checklists.',
     long_description=open('README.rst').read(),
     author='Nicholas H.Tollervey',
