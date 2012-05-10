@@ -20,6 +20,19 @@ class TestToken(unittest.TestCase):
         result = Token(token, value)
         self.assertEqual(token, result.token)
         self.assertEqual(value, result.value)
+        self.assertEqual(None, result.roles)
+
+    def test_instantiation_with_roles(self):
+        """
+        Ensures roles get assigned correctly.
+        """
+        token = 'TOKEN'
+        value = 'VALUE'
+        roles = ['doctor', 'patient']
+        result = Token(token, value, roles)
+        self.assertEqual(token, result.token)
+        self.assertEqual(value, result.value)
+        self.assertEqual(roles, result.roles)
 
     def test_repr(self):
         """
@@ -56,9 +69,11 @@ class TestGetTokens(unittest.TestCase):
         [] Item 3
 
         The following items are OR'd (rather than AND'd) together.
-        () Item 1
-        () Item 2
+        () {doctor, nurse} Item 1
+        () {doctor} Item 2
         () Item 3
+
+        Roles authorised to fulfil items are listed in curly brackets.
 
         ---
 
@@ -67,7 +82,7 @@ class TestGetTokens(unittest.TestCase):
 
         tokens = get_tokens(data)
         # Simply check we get the right number of tokens of the right type.
-        self.assertEqual(14, len(tokens), tokens)
+        self.assertEqual(15, len(tokens), tokens)
         self.assertEqual('HEADING', tokens[0].token)
         self.assertEqual('TEXT', tokens[1].token)
         self.assertEqual('TEXT', tokens[2].token)
@@ -80,8 +95,9 @@ class TestGetTokens(unittest.TestCase):
         self.assertEqual('OR_ITEM', tokens[9].token)
         self.assertEqual('OR_ITEM', tokens[10].token)
         self.assertEqual('OR_ITEM', tokens[11].token)
-        self.assertEqual('BREAK', tokens[12].token)
-        self.assertEqual('TEXT', tokens[13].token)
+        self.assertEqual('TEXT', tokens[12].token)
+        self.assertEqual('BREAK', tokens[13].token)
+        self.assertEqual('TEXT', tokens[14].token)
 
     def test_heading(self):
         """
@@ -152,6 +168,22 @@ class TestGetTokens(unittest.TestCase):
             self.assertEqual("AND_ITEM", t.token)
             self.assertEqual("An item", t.value)
 
+    def test_and_item_with_roles(self):
+        """
+        Ensures items may have roles assigned to them via a list in curly
+        brackets.
+        """
+        data = "[] {doctor, nurse} An item\n[] An item"
+        tokens = get_tokens(data)
+        self.assertEqual(2, len(tokens),
+            "Got the wrong number of tokens: %s" % tokens)
+        self.assertEqual("AND_ITEM", tokens[0].token)
+        self.assertEqual("An item", tokens[0].value)
+        self.assertEqual(['doctor', 'nurse'], tokens[0].roles)
+        self.assertEqual("AND_ITEM", tokens[1].token)
+        self.assertEqual("An item", tokens[1].value)
+        self.assertEqual(None, tokens[1].roles)
+
     def test_or_item(self):
         """
         Ensures items that can be ORed together are correctly identified.
@@ -163,6 +195,22 @@ class TestGetTokens(unittest.TestCase):
         for t in tokens:
             self.assertEqual("OR_ITEM", t.token)
             self.assertEqual("An item", t.value)
+
+    def test_or_item_with_roles(self):
+        """
+        Ensures items may have roles assigned to them via a list in curly
+        brackets.
+        """
+        data = "() {doctor, nurse} An item\n() An item"
+        tokens = get_tokens(data)
+        self.assertEqual(2, len(tokens),
+            "Got the wrong number of tokens: %s" % tokens)
+        self.assertEqual("OR_ITEM", tokens[0].token)
+        self.assertEqual("An item", tokens[0].value)
+        self.assertEqual(['doctor', 'nurse'], tokens[0].roles)
+        self.assertEqual("OR_ITEM", tokens[1].token)
+        self.assertEqual("An item", tokens[1].value)
+        self.assertEqual(None, tokens[1].roles)
 
     def test_break(self):
         """
