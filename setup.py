@@ -17,7 +17,7 @@ setup(
         'Environment :: Console',
         'Intended Audience :: Developers',
         'Intended Audience :: Information Technology',
-        'License :: OSI Approved :: MIT',
+        'License :: OSI Approved :: MIT License',
         'Topic :: Communications',
         'Topic :: Database',
         'Topic :: Internet',
