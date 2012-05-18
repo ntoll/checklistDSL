@@ -1,18 +1,9 @@
 ChecklistDSL
 ============
 
-Turns simple lists into webforms. Created in preparation for the NHShackday2012.
+Turns simple lists into webforms.
 
-Setting Up
-++++++++++
-
-In the root directory of this project simply run::
-
-    $ pip install -U requirements.txt
-
-I prefer to do this in a virtualenv. If you don't know what a virtualenv is,
-don't worry about it, simply prepend sudo to the command and enter your
-password when asked so the software can install.
+Created in preparation for the NHShackday2012.
 
 The DSL
 +++++++

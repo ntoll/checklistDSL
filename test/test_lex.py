@@ -34,6 +34,18 @@ class TestToken(unittest.TestCase):
         self.assertEqual(value, result.value)
         self.assertEqual(roles, result.roles)
 
+    def test_instantiation_with_size(self):
+        """
+        Ensures size attribute gets assigned correctly.
+        """
+        token = 'TOKEN'
+        value = 'VALUE'
+        size = 1
+        result = Token(token, value, size=size)
+        self.assertEqual(token, result.token)
+        self.assertEqual(value, result.value)
+        self.assertEqual(size, result.size)
+
     def test_repr(self):
         """
         Ensure the repr is meaningful.
@@ -108,11 +120,13 @@ class TestGetTokens(unittest.TestCase):
         tokens = get_tokens(data)
         self.assertEqual("HEADING", tokens[0].token)
         self.assertEqual("A heading", tokens[0].value)
+        self.assertEqual(1, tokens[0].size)
         # A heading that will eventually become <h6>
         data = "====== A small heading ======"
         tokens = get_tokens(data)
         self.assertEqual("HEADING", tokens[0].token)
         self.assertEqual("A small heading", tokens[0].value)
+        self.assertEqual(6, tokens[0].size)
 
     def test_text(self):
         """
