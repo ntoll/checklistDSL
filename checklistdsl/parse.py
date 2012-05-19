@@ -9,15 +9,18 @@ import re
 
 
 # Templates.
-FORM = '<form id="%(id)s" %(attrs)s>%(content)s</form>'
+FORM = ('<form id="%(id)s" %(attrs)s><fieldset>' +
+    '%(content)s</fieldset></form>')
 ROLES = '<span class="roles">(%(roles)s)</span>'
 HEADER = '<h%(size)d>%(title)s</h%(size)d>'
-PARA = '<p>%(content)s</p>'
+PARA = '<p class="help-block">%(content)s</p>'
 BREAK = '<hr/>'
-RADIO = ('<input type="radio" name="%(name)s" value="%(value)s">' +
-    '%(text)s</input>%(roles)s<br/>')
-CHECKBOX = ('<input type="checkbox" name="%(name)s" value="%(value)s">' +
-    '%(text)s</input>%(roles)s<br/>')
+RADIO = ('<label class="radio">' +
+    '<input type="radio" name="%(name)s" value="%(value)s">' +
+    '%(text)s</input></label> %(roles)s<br/>')
+CHECKBOX = ('<label class="checkbox">' +
+    '<input type="checkbox" name="%(name)s" value="%(value)s">' +
+    '%(text)s</input></label> %(roles)s<br/>')
 CSRF = '<input type="hidden" name="csrfmiddlewaretoken" value="%(token)s"/>'
 
 

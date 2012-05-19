@@ -270,8 +270,9 @@ class TestGetTag(unittest.TestCase):
         token = Token('AND_ITEM', 'Foo',
             roles=['<script>alert("hello");</script>', 'baz'])
         result = get_tag(token, 'name_value')
-        expected = ('<input type="checkbox" name="name_value" value="Foo">' +
-            'Foo</input><span class="roles">(&lt;script&gt;' +
+        expected = ('<label class="checkbox">' +
+            '<input type="checkbox" name="name_value" value="Foo">' +
+            'Foo</input></label> <span class="roles">(&lt;script&gt;' +
             'alert(&#34;hello&#34;);&lt;/script&gt;, baz)</span><br/>')
         self.assertEqual(expected, result)
 
@@ -305,8 +306,9 @@ class TestGetTag(unittest.TestCase):
         """
         token = Token('AND_ITEM', 'Foo')
         result = get_tag(token, 'name_value')
-        expected = ('<input type="checkbox" name="name_value" value="Foo">' +
-            'Foo</input><br/>')
+        expected = ('<label class="checkbox">' +
+            '<input type="checkbox" name="name_value" value="Foo">' +
+            'Foo</input></label> <br/>')
         self.assertEqual(expected, result)
 
     def test_and_item_with_roles(self):
@@ -315,8 +317,9 @@ class TestGetTag(unittest.TestCase):
         """
         token = Token('AND_ITEM', 'Foo', roles=['bar', 'baz'])
         result = get_tag(token, 'name_value')
-        expected = ('<input type="checkbox" name="name_value" value="Foo">' +
-            'Foo</input><span class="roles">(bar, baz)</span><br/>')
+        expected = ('<label class="checkbox">' +
+            '<input type="checkbox" name="name_value" value="Foo">' +
+            'Foo</input></label> <span class="roles">(bar, baz)</span><br/>')
         self.assertEqual(expected, result)
 
     def test_or_item(self):
@@ -325,8 +328,9 @@ class TestGetTag(unittest.TestCase):
         """
         token = Token('OR_ITEM', 'Foo')
         result = get_tag(token, 'name_value')
-        expected = ('<input type="radio" name="name_value" value="Foo">' +
-            'Foo</input><br/>')
+        expected = ('<label class="radio">'+
+            '<input type="radio" name="name_value" value="Foo">' +
+            'Foo</input></label> <br/>')
         self.assertEqual(expected, result)
 
     def test_or_item_with_roles(self):
@@ -335,8 +339,9 @@ class TestGetTag(unittest.TestCase):
         """
         token = Token('OR_ITEM', 'Foo', roles=['bar', 'baz'])
         result = get_tag(token, 'name_value')
-        expected = ('<input type="radio" name="name_value" value="Foo">' +
-            'Foo</input><span class="roles">(bar, baz)</span><br/>')
+        expected = ('<label class="radio">' +
+            '<input type="radio" name="name_value" value="Foo">' +
+            'Foo</input></label> <span class="roles">(bar, baz)</span><br/>')
         self.assertEqual(expected, result)
 
     def test_break(self):
@@ -353,7 +358,7 @@ class TestGetTag(unittest.TestCase):
         """
         token = Token('TEXT', 'This is a test')
         result = get_tag(token)
-        self.assertEqual('<p>This is a test</p>', result)
+        self.assertEqual('<p class="help-block">This is a test</p>', result)
 
     def test_unknown_token_type(self):
         """
