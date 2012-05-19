@@ -6,7 +6,7 @@ Copyright (C) 2012 Nicholas H.Tollervey.
 """
 
 # MAJOR, MINOR, RELEASE, STATUS [alpha, beta, final], VERSION
-VERSION = (0, 0, 1, 'alpha', 1)
+VERSION = (0, 0, 1, 'alpha', 2)
 
 def get_version():
     """
