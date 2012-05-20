@@ -17,10 +17,10 @@ PARA = '<p class="help-block">%(content)s</p>'
 BREAK = '<hr/>'
 RADIO = ('<label class="radio">' +
     '<input type="radio" name="%(name)s" value="%(value)s">' +
-    '%(text)s</input></label> %(roles)s<br/>')
+    '%(text)s</input> %(roles)s</label><br/>')
 CHECKBOX = ('<label class="checkbox">' +
     '<input type="checkbox" name="%(name)s" value="%(value)s">' +
-    '%(text)s</input></label> %(roles)s<br/>')
+    '%(text)s</input> %(roles)s</label><br/>')
 CSRF = '<input type="hidden" name="csrfmiddlewaretoken" value="%(token)s"/>'
 
 

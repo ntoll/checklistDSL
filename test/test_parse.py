@@ -272,8 +272,8 @@ class TestGetTag(unittest.TestCase):
         result = get_tag(token, 'name_value')
         expected = ('<label class="checkbox">' +
             '<input type="checkbox" name="name_value" value="Foo">' +
-            'Foo</input></label> <span class="roles">(&lt;script&gt;' +
-            'alert(&#34;hello&#34;);&lt;/script&gt;, baz)</span><br/>')
+            'Foo</input> <span class="roles">(&lt;script&gt;' +
+            'alert(&#34;hello&#34;);&lt;/script&gt;, baz)</span></label><br/>')
         self.assertEqual(expected, result)
 
     def test_heading_token_size1(self):
@@ -308,7 +308,7 @@ class TestGetTag(unittest.TestCase):
         result = get_tag(token, 'name_value')
         expected = ('<label class="checkbox">' +
             '<input type="checkbox" name="name_value" value="Foo">' +
-            'Foo</input></label> <br/>')
+            'Foo</input> </label><br/>')
         self.assertEqual(expected, result)
 
     def test_and_item_with_roles(self):
@@ -319,7 +319,7 @@ class TestGetTag(unittest.TestCase):
         result = get_tag(token, 'name_value')
         expected = ('<label class="checkbox">' +
             '<input type="checkbox" name="name_value" value="Foo">' +
-            'Foo</input></label> <span class="roles">(bar, baz)</span><br/>')
+            'Foo</input> <span class="roles">(bar, baz)</span></label><br/>')
         self.assertEqual(expected, result)
 
     def test_or_item(self):
@@ -330,7 +330,7 @@ class TestGetTag(unittest.TestCase):
         result = get_tag(token, 'name_value')
         expected = ('<label class="radio">'+
             '<input type="radio" name="name_value" value="Foo">' +
-            'Foo</input></label> <br/>')
+            'Foo</input> </label><br/>')
         self.assertEqual(expected, result)
 
     def test_or_item_with_roles(self):
@@ -341,7 +341,7 @@ class TestGetTag(unittest.TestCase):
         result = get_tag(token, 'name_value')
         expected = ('<label class="radio">' +
             '<input type="radio" name="name_value" value="Foo">' +
-            'Foo</input></label> <span class="roles">(bar, baz)</span><br/>')
+            'Foo</input> <span class="roles">(bar, baz)</span></label><br/>')
         self.assertEqual(expected, result)
 
     def test_break(self):
