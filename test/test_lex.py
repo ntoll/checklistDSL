@@ -127,6 +127,13 @@ class TestGetTokens(unittest.TestCase):
         self.assertEqual("HEADING", tokens[0].token)
         self.assertEqual("A small heading", tokens[0].value)
         self.assertEqual(6, tokens[0].size)
+        # A heading can include punctuation characters too
+        data = "== This is a heading! (Or so it would seem) =="
+        tokens = get_tokens(data)
+        self.assertEqual("HEADING", tokens[0].token)
+        self.assertEqual("This is a heading! (Or so it would seem)",
+            tokens[0].value)
+        self.assertEqual(2, tokens[0].size)
 
     def test_text(self):
         """

@@ -32,7 +32,7 @@ token types.
 """
 MATCHER = {
     # == Heading == (becomes an h* element where * is number of equal signs)
-    '(?P<depth_start>=+)(?P<value>(\\s|\\w)*)(?P<depth_end>=+)': 'HEADING',
+    '(?P<depth_start>=+)(?P<value>[^=]+)(?P<depth_end>=+)': 'HEADING',
     # // This is a comment (ignored)
     '\/\/(?P<value>.*)': 'COMMENT',
     # [] item 1 (becomes a check box)
